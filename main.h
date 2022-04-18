@@ -1,8 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdagr.h>
+#include <stdarg.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 /**
  * struct specifiers: holds specifiers and their functions
@@ -13,9 +14,8 @@ typedef struct specifiers
 {
  char *specifier;
  int (*f)(va_list args);
-} spc_dt
+} spc_dt;
 
-int _write(char c);
-int _printf(const char *format, ...)
+int _printf(const char *format, ...);
 
 #endif
