@@ -6,14 +6,10 @@
  *
  * Return: number of chars written
  */
-int print_char(va_list *c)
+int print_char(va_list c)
 {
-	char ch;
-	int j;
+	char ch = (char)va_arg(c, int);
 
-	ch = va_arg(*c, int);
-	j = sizeof(ch);
-	write(1, &ch, j);
-
-	return (j);
+	_print(ch);
+	return (1);
 }

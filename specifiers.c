@@ -1,27 +1,28 @@
 #include "main.h"
 
 /**
-* *get_func - This is a pointer to a function that get the specifiers
+* *check_for_specifiers - This is a pointer to a function
+* that get the specifiers
 *
-* @s: The format specifier
+* @format: The format specifier
 * Return: Return the specifier index
 */
 
-int (*get_func(char s))(va_list *)
+int (*check_for_specifiers(const char *format))(va_list)
 {
-	int i = 0;
-
-	spec_type fmt[] = {
-		{'c', print_char},
-		{'s', print_str},
-		{'d', print_int},
-		{'i', print_uint}
+	unsigned int i;
+	print_t p[] = {
+		{"c", print_char},
+		{"s", print_str},
+		{NULL, NULL}
 	};
 
-	for (i = 0; i < 4; i++)
+	for (i = 0; p[i].t != NULL; i++)
 	{
-		if (s == fmt[i].str)
-			return (fmt[i].func);
+		if (*(p[i].t) == *format)
+		{
+			break;
+		}
 	}
-	return (NULL);
+	return (p[i].f);
 }

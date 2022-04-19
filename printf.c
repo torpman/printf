@@ -10,35 +10,38 @@
 
 int _printf(const char *format, ...)
 {
-	va_list ap;
-	char f;
-	int i;
-	int len;
-	int (*prints)(va_list *);
+	unsigned int i = 0, count = 0;
+	va_list valist;
+	int (*f)(va_list);
 
-	va_start(ap, format);
-	len = 0;
-	for (i = 0; format[i] != '\0'; i++)
+	if (format == NULL)
+		return (-1);
+	va_start(valist, format);
+	while (format[i])
 	{
-		if (format[i] == '%')
+		for (; format[i] != '%' && format[i]; i++)
 		{
-			i++; /* fastforward*/
-			f = format[i];
-
-			if (f == '%')
-			{
-				len += write(1, "%", 1);
-				continue;
-			}
-			prints = get_func(f);
-
-		/*	if (prints == NULL)*/
-			len += prints(&ap);
+			_print(format[i]);
+			count++;
 		}
+		if (!format[i])
+			return (count);
+		f = check_for_specifiers(&format[i + 1]);
+		if (f != NULL)
+		{
+			count += f(valist);
+			i += 2;
+			continue;
+		}
+		if (!format[i + 1])
+			return (-1);
+		_print(format[i]);
+		count++;
+		if (format[i + 1] == '%')
+			i += 2;
 		else
-			len += write(1, &format[i], 1);
+			i++;
 	}
-
-	va_end(ap);
-	return (len);
+	va_end(valist);
+	return (count);
 }
