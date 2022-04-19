@@ -15,8 +15,8 @@ int _printf(const char *format, ...)
 	int i;
 	int len;
 	int (*prints)(va_list *);
-	va_start(ap, format);
 
+	va_start(ap, format);
 	len = 0;
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -24,13 +24,19 @@ int _printf(const char *format, ...)
 		{
 			i++; /* fastforward*/
 			f = format[i];
+
+			if (f == '%')
+			{
+				len += write(1, "%", 1);
+				continue;
+			}
 			prints = get_func(f);
 			len += prints(&ap);
 		}
 		else
 			len += write(1, &format[i], 1);
 	}
-	
+
 	va_end(ap);
 	return (len);
 }
