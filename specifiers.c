@@ -14,9 +14,11 @@ int (*get_func(char s))(va_list *)
 	spec_type fmt[] = {
 		{'c', print_char},
 		{'s', print_str},
+		{'d', print_int},
+		{'i', print_uint}
 	};
 
-	for (i = 0; i < 2; i++)
+	for (i = 0; i < 4; i++)
 	{
 		if (s == fmt[i].str)
 			return (fmt[i].func);
