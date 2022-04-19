@@ -1,0 +1,84 @@
+.TH _printf 3 "20 Apr 2022" "Version 1.0" "program manual"
+.SH NAME
+.B _printf - formatted output conversion and print data. Input to the stdout
+.PP
+.SH SYNOPSIS
+.BI printf (format, argument)...
+.BI #include "main.h"
+.LP
+.BI "int _printf(const char *"format ", ...);
+.SH DESCRIPTION
+_printf a variadic function can receive a number of arguments, which coverts the character strings that receives as argument and prints it to the standard output. It checks for formatter such as: "c", "s", "%", "d" and i
+.SH RETURN VALUE
+.RS
+On successful return, _printf returns the number of characters printed (excluding the null byte used to end output to strings).
+
+.SH Format  String format
+The format string is a character string, printed as is in double quotes.  The format string is composed of zero or more directives: ordinary characters that are not (%), which are copied unchanged to the output stream; and conversion specifications, each of which results in fetching zero or more subsequent arguments. Each conversion specification is introduced by the character
+.B %, 
+and ends with a conversation specifier.
+ .I Conversion specifiers
+Special characters like a new line are escaped
+.PP
+The arguments must correspond with the conversion specifier. By default, the arguments are used in the order given as each conversion specifier ask for the next argument. Error resulting if many arguments are given insufficiently
+.RE
+.PP
+.B Conversion specifiers 
+.RS
+A character that specifies the type of conversion to be applied.   The variables to be printed are separated from the format string with a comma. Each variable passed to _printf needs to have a conversion specifier.
+.TP
+.B i, d
+- These specifiers are for 
+.I int arguments. They convert variable to signed decimal number, positive or negative
+.LP
+.B o, u, x, X
+.R These specifiers are converted to unsigned decimal (base 10 number),  unsigned octal (base 8 number), unsigned hexadecimal (base 16 number with lowercase letters) and unsigned hexadecimal (base 16 number with uppercase letters).
+.LP
+.B c, s
+- prints a single character and entire string. s is a pointer to an array of character type, that converts the corresponding argument to a character string (pointer  to a string). Characters from the array are written up to (but not including) a terminating null byte ('\0');
+.LP
+.B b 
+- print a number in binary base 
+.LP
+.B S
+Prints a string. A pointer to an array of character, that converts the corresponding argument to a character string, with  non printable character. Non printable character are written in two digits hexadecimal notation preceded by a '\x', followed by the ASCII code value in uppercase.
+.LP
+.B r, R
+- Both are pointer to an array of character type (pointer to string). For r, characters from array are then reversed and returned and for R characters from array are then converted and rotated 13 character forward in the alphabet.
+.LP
+.B p
+- Prints an address , given by a pointer variable
+.LP
+.B %
+Acts like an escape for the character %.
+.SH The flag characters for conversation specifier
+.B ' ' 
+- prints a space in front of the signed integers (positive number).
+.LP
+.B #
+- print number in hexadecimal, uppercase case hexadecimal and octal where the first character of the output string is made zero. If the converted number doesn't already begin with a 0, prepend a 0
+.LP
+.B + 
+- prints a plus sign in front of positive signed integers and minus sign in front of negative signed integers. + overrides a space when both flags are given
+.LP
+.SH BUGS
+_ printf does not take care of length and precision modifiers
+
+.SH Example
+.LP To print the string 'Hello World' and it's length in decimal.
+
+#include 'main.h'
+
+Int main (void)
+{
+Int length; 
+_printf('%s', 'Hello world!')
+
+_printf('Hello world! contains  %d character',  length);
+
+Length = _printf ('' Hello world!');
+
+return (0);
+}
+.SH AUTHORS
+Gbenga Ogunmefun and Nike Oni
