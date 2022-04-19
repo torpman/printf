@@ -4,18 +4,15 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
-/**
- * struct specifiers: holds specifiers and their functions
- * @f: Input function pointer
- * @specifer: Input specifier conversion
- */
 typedef struct specifiers
 {
- char *specifier;
- int (*f)(va_list args);
-} spc_dt;
+	char str;
+	int (*func)(va_list *);
+} spec_type;
 
 int _printf(const char *format, ...);
-
+int (*get_func(char s))(va_list *);
+int print_char(va_list *c);
 #endif
