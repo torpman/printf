@@ -20,5 +20,6 @@ int _strlen(char *str);
 int print_int(va_list *p_int);
 char *_itoa(int arg_int, char *strout, int base);
 char *_revstr(char *str);
+char *_itoa(unsigned int arg_int, char *strout, int base);
 
 #endif
