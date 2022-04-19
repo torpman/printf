@@ -17,4 +17,5 @@ int _print(char c);
 int print_int(va_list i);
 int print_char(va_list c);
 int print_str(va_list s);
+int print_bin(va_list b);
 #endif
