@@ -14,7 +14,7 @@ typedef struct print
 
 int _printf(const char *format, ...);
 int _print(char c);
-int (*check_for_specifiers(const char *format))(va_list);
+
 int print_char(va_list c);
 int print_str(va_list s);
 #endif
