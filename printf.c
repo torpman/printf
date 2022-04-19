@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 				continue;
 			}
 			prints = get_func(f);
-	
+
 		/*	if (prints == NULL)*/
 			len += prints(&ap);
 		}
