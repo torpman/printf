@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef _MAIN_H_
+#define _MAIN_H_
 
 #include <stdarg.h>
 #include <stdlib.h>
@@ -17,5 +17,4 @@ int (*get_func(char s))(va_list *);
 int print_char(va_list *c);
 int print_str(va_list *str);
 int _strlen(char *str);
-
 #endif
