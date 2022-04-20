@@ -22,8 +22,7 @@ int print_uint(va_list u);
 int print_oct(va_list o);
 int print_ex(va_list x);
 int print_HEX(va_list X);
-unsigned int handl_buf(char *buf, char c, unsigned int ibuf);
-int print_buf(char *buf, unsigned int nbuf);
 int print_S(va_list S);
+int print_pnt(va_list p);
 
 #endif
