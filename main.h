@@ -24,6 +24,7 @@ int print_ex(va_list x);
 int print_HEX(va_list X);
 int print_S(va_list S);
 int print_pnt(va_list p);
+int print_rev(va_list r);
 int print_rot13(va_list R);
 
 
