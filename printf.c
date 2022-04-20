@@ -18,7 +18,7 @@ static int (*check_for_specifiers(const char *format))(va_list)
 		{"b", print_bin},
 		{"u", print_uint},
 		{"o", print_oct},
-		{"x", print_hex},
+		{"x", print_ex},
 		{"X", print_HEX},
 		{NULL, NULL}
 	};
