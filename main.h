@@ -20,7 +20,7 @@ int print_str(va_list s);
 int print_bin(va_list b);
 int print_uint(va_list u);
 int print_oct(va_list o);
-int print_hex(va_list x);
+int print_ex(va_list x);
 int print_HEX(va_list X);
 
 #endif
