@@ -24,5 +24,12 @@ int print_ex(va_list x);
 int print_HEX(va_list X);
 int print_S(va_list S);
 int print_pnt(va_list p);
+int print_buf(char *buf, unsigned int nbuf);
+int prinpint(va_list arguments, char *buf, unsigned int ibuf);
+unsigned int handl_buf(char *buf, char c, unsigned int ibuf);
+int prinsint(va_list arguments, char *buf, unsigned int ibuf);
+int pr_l_int(va_list arguments, char *buf, unsigned int ibuf);
+int print_rot13(va_list args, int len);
+
 
 #endif
