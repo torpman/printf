@@ -26,7 +26,7 @@ int print_bin(va_list b)
 		sum += a[i];
 		if (sum || i == 31)
 		{
-			_putchar('0' + a[i]);
+			_print('0' + a[i]);
 			count++;
 		}
 	}
