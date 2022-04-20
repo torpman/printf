@@ -22,7 +22,7 @@ static int (*check_for_specifiers(const char *format))(va_list)
 		{"x", print_ex},
 		{"X", print_HEX},
 		{"p", print_pnt},
-		{"r", print_r},
+		{"r", print_rev},
 		{"R", print_rot13},
 		{NULL, NULL}
 	};
