@@ -1,37 +1,38 @@
 #include "main.h"
 /**
   * print_rot13 - print 13th character from the input.
-  * @args: input argument list.
-  * @len: input length.
+  * @R: string to print
   *
-  * Return: number of chars printed.
-  */
-int print_rot13(va_list args, int len)
+  * Return: number of chars printed
+*/
+
+int print_rot13(va_list R)
 {
-	int i, position;
+	char *str;
+	unsigned int i, j;
+	int count = 0;
+	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	char r1[] = "NOPQRSTUVWXYZABCDEFGHIJKLM      nopqrstuvwxyzabcdefghijklm";
-
-	char *str = va_arg(args, char *);
-
+	str = va_arg(R, char *);
 	if (str == NULL)
-		return (-1);
-
-	i = 0;
-	position = 0;
-	while (str[i])
+		str = "(ahyy)";
+	for (i = 0; str[i]; i++)
 	{
-		if ((str[i] >= 'A' && str[i] <= 'Z')
-		|| (str[i] >= 'a' && str[i] <= 'z'))
+		for (j = 0; in[j]; j++)
 		{
-			position = str[i] - 65;
-			len += _putchar(r1[position]);
+			if (in[j] == str[i])
+			{
+				_print(out[j]);
+				count++;
+				break;
+			}
 		}
-		else
-			len += _putchar(str[i]);
-
-		i++;
+		if (!in[j])
+		{
+			_print(str[i]);
+			count++;
+		}
 	}
-
-	return (len);
+	return (count);
 }
